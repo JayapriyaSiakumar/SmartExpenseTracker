@@ -1,0 +1,121 @@
+import React, { useContext, useState } from "react";
+import { FaTrashCan } from "react-icons/fa6";
+import { TiEdit } from "react-icons/ti";
+import IncomeForm from "../Components/IncomeForm";
+import { incomeExpenseContext } from "../Context/IncomeExpenseProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const Income = () => {
+  const { incomeData, setIncomeData, calculateIncomeTotal } =
+    useContext(incomeExpenseContext);
+  const [data, setData] = useState({});
+
+  //Edit
+  const handleEdit = (id) => {
+    const editData = { ...incomeData[id], id: id };
+    setData(editData);
+  };
+
+  //Delete
+  const handleDelete = (id) => {
+    const newIncomeData = incomeData.filter((item, index) => index !== id);
+    localStorage.setItem("incomes", JSON.stringify(newIncomeData));
+    toast.info("Deleted Successfully", {
+      autoClose: 3000,
+    });
+    setIncomeData([...newIncomeData]);
+    calculateIncomeTotal([...newIncomeData]);
+  };
+
+  //Submit
+  const handleSubmitForm = (updatedData) => {
+    let toastMessage = "";
+    try {
+      if (updatedData.id !== undefined) {
+        const i = updatedData.id;
+        incomeData[i].amount = updatedData.amount;
+        incomeData[i].date = updatedData.date;
+        incomeData[i].note = updatedData.note;
+        toastMessage = "Updated Successfully";
+      } else {
+        incomeData.push(updatedData);
+        toastMessage = "Added Successfully";
+      }
+      localStorage.setItem("incomes", JSON.stringify(incomeData));
+      toast.success(toastMessage, {
+        autoClose: 3000,
+      });
+      setIncomeData([...incomeData]);
+      calculateIncomeTotal([...incomeData]);
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+
+  return (
+    <>
+      <ToastContainer position="top-center" />
+      <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-3">
+        {data.id === undefined ? (
+          <IncomeForm handleSubmitForm={handleSubmitForm} />
+        ) : (
+          <IncomeForm data={data} handleSubmitForm={handleSubmitForm} />
+        )}
+        <div className="bg-white col-span-2 max-h-screen overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto">
+          {incomeData.length > 0 ? (
+            <table className="w-full text-sm text-left rtl:text-right text-gray-900 dark:text-gray-400">
+              <thead className="text-sm text-gray-950 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    Notes
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Date
+                  </th>
+                  <th scope="col" className="px-6 py-3 ">
+                    Amount
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {incomeData.map((item, index) => {
+                  return (
+                    <tr
+                      key={index}
+                      className="bg-white font-semibold text-sm text-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                      <td className="px-6 py-4">{item.note}</td>
+                      <td className="px-6 py-4">{item.date}</td>
+                      <td className="px-6 py-4 font-bold ">$ {item.amount}</td>
+                      <td className="px-6 py-4 flex gap-3 items-center">
+                        <span
+                          className="font-medium text-2xl cursor-pointer"
+                          onClick={() => handleEdit(index)}>
+                          <TiEdit />
+                        </span>
+                        <span
+                          className="font-medium text-xl cursor-pointer"
+                          onClick={() => handleDelete(index)}>
+                          <FaTrashCan />
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          ) : (
+            <div className="flex justify-center items-center h-1/2">
+              <h1 className="text-2xl text-center font-bold">No Data</h1>
+            </div>
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Income;
