@@ -5,6 +5,7 @@ import IncomeForm from "../Components/IncomeForm";
 import { incomeExpenseContext } from "../Context/IncomeExpenseProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import noData from "../assets/no-data.png";
 
 const Income = () => {
   const { incomeData, setIncomeData, calculateIncomeTotal } =
@@ -108,8 +109,9 @@ const Income = () => {
               </tbody>
             </table>
           ) : (
-            <div className="flex justify-center items-center h-1/2">
-              <h1 className="text-2xl text-center font-bold">No Data</h1>
+            <div className="flex flex-col justify-center items-center h-full w-full">
+              <h1 className="text-xl font-semibold text-gray-500">No Data!</h1>
+              <img className="h-20 w-20 m-5" src={noData} alt="No Data" />
             </div>
           )}
         </div>

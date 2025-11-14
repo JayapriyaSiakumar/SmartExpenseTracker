@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { incomeExpenseContext } from "../Context/IncomeExpenseProvider";
 import { PieChart, Pie, ResponsiveContainer, Cell, Tooltip } from "recharts";
+import noData from "../assets/no-data.png";
 
 const Dashboard = () => {
   const { totalList, expenseData } = useContext(incomeExpenseContext);
@@ -56,6 +57,9 @@ const Dashboard = () => {
   return (
     <div className="grid grid-cols-3 gap-4">
       <div className="col-span-2 bg-white rounded-lg shadow-2xl mt-10">
+        <h1 className="text-2xl font-bold text-center mt-4">
+          Expenses by Category
+        </h1>
         {totalList.totalExpense > 0 ? (
           <ResponsiveContainer width="100%" height={450}>
             <PieChart>
@@ -79,8 +83,15 @@ const Dashboard = () => {
             </PieChart>
           </ResponsiveContainer>
         ) : (
-          <div className="flex justify-center items-center h-full">
-            <h1 className="text-2xl font-bold">No Expense</h1>
+          <div className="flex flex-col justify-start items-center mt-5 w-full">
+            <h1 className="text-lg font-semibold text-gray-500 p-5">
+              No expenses yet. Add some expense to see the chart!
+            </h1>
+            <img
+              className="h-30 w-30 m-5 sm:h-40 sm:w-40 "
+              src={noData}
+              alt="No Data"
+            />
           </div>
         )}
       </div>

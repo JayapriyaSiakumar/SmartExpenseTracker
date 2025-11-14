@@ -3,7 +3,7 @@ import logo from "../assets/logo.png";
 import { AiFillPieChart } from "react-icons/ai";
 import { GiCash } from "react-icons/gi";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -60,28 +60,40 @@ const Sidebar = () => {
             className={`h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800`}>
             <ul className="space-y-2 font-medium">
               <li>
-                <Link
+                <NavLink
                   to="/"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "bg-blue-200" : ""
+                    } flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group`
+                  }>
                   <AiFillPieChart />
                   <span className="ms-3">Dashboard</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/income"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "bg-blue-200" : ""
+                    } flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group`
+                  }>
                   <GiCash />
                   <span className="flex-1 ms-3 whitespace-nowrap">Income</span>
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link
+                <NavLink
                   to="/expense"
-                  className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  className={({ isActive }) =>
+                    `${
+                      isActive ? "bg-blue-200" : ""
+                    } flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group`
+                  }>
                   <FaMoneyBillTrendUp />
                   <span className="flex-1 ms-3 whitespace-nowrap">Expense</span>
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
