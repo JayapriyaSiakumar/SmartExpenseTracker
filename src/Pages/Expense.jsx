@@ -77,15 +77,15 @@ const Expense = () => {
   return (
     <>
       <ToastContainer position="top-center" />
-      <div className="mt-5 grid grid-cols-1 lg:grid-cols-3 gap-3">
+      <div className="mt-5 grid grid-cols-1  lg:grid-cols-3 gap-3">
         {editData.id === undefined ? (
           <ExpenseForm handleSubmitForm={handleSubmitForm} />
         ) : (
           <ExpenseForm data={editData} handleSubmitForm={handleSubmitForm} />
         )}
 
-        <div className="bg-white col-span-2 max-h-screen overflow-x-auto shadow-md sm:rounded-lg overflow-y-auto">
-          <form action="" className="m-3 mb-0 flex gap-3 items-center  ">
+        <div className="bg-white w-full col-span-2  max-h-screen  shadow-md sm:rounded-lg overflow-y-auto">
+          <form className="m-3 mb-5 sm:mb-0 border-b relative sm:border-none grid grid-cols-1 sm:grid-col-2 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-5 pb-3">
             <div className="mb-5">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Category
@@ -103,9 +103,9 @@ const Expense = () => {
                 <option value="others">Others</option>
               </select>
             </div>
-            <div className="mb-5">
+            <div className="mb-1">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Amount Range
+                Range
               </label>
               <select
                 value={filters.amountRange}
@@ -120,7 +120,7 @@ const Expense = () => {
                 <option value="1000+">1000+</option>
               </select>
             </div>
-            <div className="mb-5">
+            <div className="mb-2">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 From
               </label>
@@ -130,10 +130,10 @@ const Expense = () => {
                 onChange={(e) =>
                   setFilters((f) => ({ ...f, dateFrom: e.target.value }))
                 }
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
-            <div className="mb-5">
+            <div className="mb-2">
               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 To
               </label>
@@ -146,7 +146,7 @@ const Expense = () => {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
-            <div className="m-7 ">
+            <div className="mb-2 flex items-end  md:items-center justify-center">
               <button
                 type="reset"
                 onClick={handleFilterReset}
@@ -156,7 +156,7 @@ const Expense = () => {
             </div>
           </form>
           {filteredData.length > 0 ? (
-            <table className="w-full text-sm text-left rtl:text-right text-gray-900 dark:text-gray-400">
+            <table className="w-full relative text-sm text-left rtl:text-right text-gray-900 dark:text-gray-400 overflow-x-auto">
               <thead className="text-sm text-gray-900 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                   <th scope="col" className="px-6 py-3">

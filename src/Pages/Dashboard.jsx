@@ -55,13 +55,13 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="grid grid-cols-3 gap-4">
-      <div className="col-span-2 bg-white rounded-lg shadow-2xl mt-10">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
+      <div className="col-span-2 bg-white rounded-lg shadow-2xl w-full h-full">
         <h1 className="text-2xl font-bold text-center mt-4">
           Expenses by Category
         </h1>
         {totalList.totalExpense > 0 ? (
-          <ResponsiveContainer width="100%" height={450}>
+          <ResponsiveContainer width="100%" height={450} className="p-5">
             <PieChart>
               <Pie
                 data={chartData}
@@ -95,34 +95,34 @@ const Dashboard = () => {
           </div>
         )}
       </div>
-      <div className="col-span-1 gap-4 mt-10 grid grid-cols-1 text-center">
-        <div className="block max-w-xs p-6 bg-blue-400 border border-gray-200 rounded-lg shadow-sm hover:bg-blue-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Food Expenses
+      <div className="col-span-1 gap-1 grid grid-cols-2 sm:grid-cols-1 text-center">
+        <div className="max-w-lg  sm:max-w-xs flex flex-col justify-center items-center  bg-blue-400 border border-gray-200 rounded-lg shadow-sm hover:bg-blue-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 className="mb-1 text-lg sm:text-xl  font-bold tracking-tight text-gray-900 dark:text-white">
+            Food
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
             $ {foodTotal}
           </p>
         </div>
-        <div className="block max-w-xs p-6 bg-green-400 border border-gray-200 rounded-lg shadow-sm hover:bg-green-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Travel Expenses
+        <div className="max-w-lg sm:max-w-xs  flex flex-col justify-center items-center bg-green-400 border border-gray-200 rounded-lg shadow-sm hover:bg-green-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 className="mb-2 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Travel
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
             $ {travelTotal}
           </p>
         </div>
-        <div className="block max-w-xs p-6 bg-yellow-300 border border-gray-200 rounded-lg shadow-sm hover:bg-yellow-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Bill Expenses
+        <div className="max-w-lg sm:max-w-xs  flex flex-col justify-center items-center bg-yellow-300 border border-gray-200 rounded-lg shadow-sm hover:bg-yellow-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 className="mb-2 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Bill
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
             $ {billTotal}
           </p>
         </div>
-        <div className="block max-w-xs p-6 bg-orange-300 border border-gray-200 rounded-lg shadow-sm hover:bg-orange-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-          <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Other Expenses
+        <div className="max-w-lg sm:max-w-xs  flex flex-col justify-center items-center bg-orange-300 border border-gray-200 rounded-lg shadow-sm hover:bg-orange-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+          <h5 className="mb-2 text-lg sm:text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+            Other
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
             $ {othersTotal}

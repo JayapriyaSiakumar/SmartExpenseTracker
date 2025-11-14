@@ -39,7 +39,7 @@ const IncomeForm = ({ data, handleSubmitForm }) => {
   return (
     <>
       <form
-        className="max-w-sm col-span-1 shadow-2xl bg-white p-5 rounded-lg"
+        className="max-w-full col-span-1 shadow-2xl bg-white p-5 rounded-lg"
         onSubmit={handleSubmit}>
         <h1 className="text-2xl  mb-4 font-bold">
           {isEditMode ? "Edit Income" : "Add Income"}

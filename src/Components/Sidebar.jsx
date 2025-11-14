@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import { AiFillPieChart } from "react-icons/ai";
 import { GiCash } from "react-icons/gi";
@@ -11,6 +11,10 @@ const Sidebar = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    toggleSidebar();
+  }, []);
 
   return (
     <div>
