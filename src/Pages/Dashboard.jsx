@@ -60,8 +60,7 @@ const Dashboard = () => {
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
       <div className="col-span-2 bg-white rounded-lg shadow-2xl w-full h-full">
         <h1 className="text-2xl font-bold text-center mt-4">
-          Expenses by Category {foodTotal} , {travelTotal} , {billTotal} ,{" "}
-          {othersTotal}
+          Expenses by Category
         </h1>
         {totalList.totalExpense > 0 ? (
           <ResponsiveContainer width="100%" height={450} className="p-5">
