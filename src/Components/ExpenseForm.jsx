@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const ExpenseForm = ({ data, handleSubmitForm }) => {
   const initialData = {
     amount: "",
-    category: "",
+    category: "food",
     date: "",
     note: "",
   };
