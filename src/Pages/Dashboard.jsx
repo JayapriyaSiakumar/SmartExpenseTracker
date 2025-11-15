@@ -14,6 +14,7 @@ const Dashboard = () => {
           0
         )
       : 0;
+
   console.log(foodTotal);
   let travelTotal =
     expenseData.length > 0
@@ -51,14 +52,16 @@ const Dashboard = () => {
     { name: "Group D", value: 200 },
   ]; */
   const renderCustomizedLabel = ({ name, value }) => {
-    return value > 0 ? `${name}: ${value}` : "";
+    if (value === 0) return null;
+    return `${name}: ${value}`;
   };
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-5">
       <div className="col-span-2 bg-white rounded-lg shadow-2xl w-full h-full">
         <h1 className="text-2xl font-bold text-center mt-4">
-          Expenses by Category
+          Expenses by Category {foodTotal} , {travelTotal} , {billTotal} ,{" "}
+          {othersTotal}
         </h1>
         {totalList.totalExpense > 0 ? (
           <ResponsiveContainer width="100%" height={450} className="p-5">
@@ -101,7 +104,7 @@ const Dashboard = () => {
             Food
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
-            $ {foodTotal}
+            ${foodTotal}
           </p>
         </div>
         <div className="max-w-lg sm:max-w-xs  flex flex-col justify-center items-center bg-green-400 border border-gray-200 rounded-lg shadow-sm hover:bg-green-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -109,7 +112,7 @@ const Dashboard = () => {
             Travel
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
-            $ {travelTotal}
+            ${travelTotal}
           </p>
         </div>
         <div className="max-w-lg sm:max-w-xs  flex flex-col justify-center items-center bg-yellow-300 border border-gray-200 rounded-lg shadow-sm hover:bg-yellow-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -117,7 +120,7 @@ const Dashboard = () => {
             Bill
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
-            $ {billTotal}
+            ${billTotal}
           </p>
         </div>
         <div className="max-w-lg sm:max-w-xs  flex flex-col justify-center items-center bg-orange-300 border border-gray-200 rounded-lg shadow-sm hover:bg-orange-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -125,7 +128,7 @@ const Dashboard = () => {
             Other
           </h5>
           <p className="font-bold text-gray-700 dark:text-gray-400">
-            $ {othersTotal}
+            ${othersTotal}
           </p>
         </div>
       </div>
