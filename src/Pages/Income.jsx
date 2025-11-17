@@ -87,7 +87,7 @@ const Income = () => {
                   return (
                     <tr
                       key={index}
-                      className="bg-white font-semibold text-sm text-gray-900 border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                      className="bg-white font-semibold text-sm text-gray-900 dark:text-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
                       <td className="px-6 py-4">{item.note}</td>
                       <td className="px-6 py-4">{item.date}</td>
                       <td className="px-6 py-4 font-bold ">$ {item.amount}</td>
